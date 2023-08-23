@@ -1,0 +1,145 @@
+Database->KisanMitra1
+
+
+
+CREATE TABLE [dbo].[Users] (
+    [userId]    INT          IDENTITY (1, 1) NOT NULL,
+    [firstName] VARCHAR (25) NOT NULL,
+    [lastName]  VARCHAR (25) NOT NULL,
+    [email]     VARCHAR (25) NULL,
+    [mobNo]     VARCHAR (10) NOT NULL,
+    [gstinNo]   VARCHAR (15) NULL,
+    [city]      VARCHAR (25) NOT NULL,
+    [roleType]  VARCHAR (15) NOT NULL,
+    [password]  VARCHAR (50) NULL,
+    [col2]      VARCHAR (10) NULL,
+    [col3]      INT          NULL,
+    [col4]      FLOAT (53)   NULL,
+    PRIMARY KEY CLUSTERED ([userId] ASC),
+    UNIQUE NONCLUSTERED ([mobNo] ASC)
+);
+
+
+
+
+CREATE TABLE [dbo].[ProductCategories] (
+    [prodCatId]   INT          IDENTITY (1, 1) NOT NULL,
+    [prodCatType] VARCHAR (40) NULL,
+    PRIMARY KEY CLUSTERED ([prodCatId] ASC),
+    UNIQUE NONCLUSTERED ([prodCatType] ASC)
+);
+
+
+CREATE TABLE [dbo].[ProductSubCategories] (
+    [prodSubCatId]   INT          IDENTITY (1, 1) NOT NULL,
+    [prodSubCatType] VARCHAR (40) NULL,
+    [prodCatId]      INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([prodSubCatId] ASC),
+    UNIQUE NONCLUSTERED ([prodSubCatType] ASC),
+    FOREIGN KEY ([prodCatId]) REFERENCES [dbo].[ProductCategories] ([prodCatId]) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+CREATE TABLE [dbo].[Products] (
+    [productId]    INT           IDENTITY (1, 1) NOT NULL,
+    [productName]  VARCHAR (50)  NOT NULL,
+    [price]        FLOAT (53)    DEFAULT ((0.0)) NOT NULL,
+    [qty]          INT           DEFAULT ((0)) NOT NULL,
+    [volume]       FLOAT (53)    DEFAULT ((0.0)) NOT NULL,
+    [brand]        VARCHAR (50)  NULL,
+    [userId]       INT           NULL,
+    [prodSubCatId] INT           NOT NULL,
+    [description]  VARCHAR (100) NULL,
+    [image]        VARCHAR (500) NULL,
+    [col1]         VARCHAR (100) NULL,
+    [col2]         VARCHAR (100) NULL,
+    [col3]         VARCHAR (50)  NULL,
+    [col4]         VARCHAR (50)  NULL,
+    [col5]         FLOAT (53)    NULL,
+    [col6]         FLOAT (53)    NULL,
+    [col7]         INT           NULL,
+    [col8]         INT           NULL,
+    PRIMARY KEY CLUSTERED ([productId] ASC),
+    FOREIGN KEY ([prodSubCatId]) REFERENCES [dbo].[ProductSubCategories] ([prodSubCatId]) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY ([userId]) REFERENCES [dbo].[Users] ([userId]) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE [dbo].[Address] (
+    [addressId] INT          IDENTITY (1, 1) NOT NULL,
+    [city]      VARCHAR (50) NOT NULL,
+    [state]     VARCHAR (50) NOT NULL,
+    [zip]       VARCHAR (6)  NOT NULL,
+    [country]   VARCHAR (50) NOT NULL,
+    [district]  VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([addressId] ASC)
+);
+
+
+
+
+
+CREATE TABLE [dbo].[Orders] (
+    [orderId]   INT  IDENTITY (1, 1) NOT NULL,
+    [orderDate] DATE NOT NULL,
+    [userId]    INT  NOT NULL,
+    [addressId] INT  NOT NULL,
+    [paymentId] INT  NOT NULL,
+    PRIMARY KEY CLUSTERED ([orderId] ASC),
+    FOREIGN KEY ([userId]) REFERENCES [dbo].[Users] ([userId]),
+    FOREIGN KEY ([addressId]) REFERENCES [dbo].[Address] ([addressId]),
+    FOREIGN KEY ([paymentId]) REFERENCES [dbo].[Payments] ([Id]) ON DELETE CASCADE
+);
+
+
+
+
+
+CREATE TABLE [dbo].[OrderDetails] (
+    [Id]        INT IDENTITY (1, 1) NOT NULL,
+    [productId] INT NULL,
+    [qty]       INT NULL,
+    [orderId]   INT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    FOREIGN KEY ([orderId]) REFERENCES [dbo].[Orders] ([orderId]) ON DELETE CASCADE,
+    FOREIGN KEY ([productId]) REFERENCES [dbo].[Products] ([productId]) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE [dbo].[Payments] (
+    [Id]          INT          IDENTITY (1, 1) NOT NULL,
+    [cardNo]      VARCHAR (16) NULL,
+    [nameOnCard]  VARCHAR (50) NULL,
+    [amount]      INT          NULL,
+    [paymentDate] DATE         NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+CREATE TABLE Cart
+(
+	[cartId] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [userId] INT NOT NULL,
+	FOREIGN KEY (userId) References Users ([userId]) ON DELETE CASCADE
+
+)
+
+
+
+CREATE TABLE CartItems
+(
+	[cartItemId] INT NOT NULL PRIMARY KEY Identity(1,1),
+	[cartId] INT NOT Null, 
+    [productId] INT NOT NULL, 
+    [qty] INT NULL,
+	
+	FOREIGN KEY (cartId) REFERENCES Cart (cartId) On Delete Cascade on Update cascade,
+//	FOREIGN Key (productId) References Products (productId)  On Delete Cascade
+
+
+)
+
+
