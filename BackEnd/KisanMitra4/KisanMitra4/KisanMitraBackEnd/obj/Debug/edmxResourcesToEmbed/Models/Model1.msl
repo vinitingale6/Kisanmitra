@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KisanMitra1ModelStoreContainer" CdmEntityContainer="KisanMitra1Entities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="KisanMitra1Model.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="district" ColumnName="district" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="KisanMitra1Model.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="KisanMitra1Model.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="KisanMitra1Model.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="KisanMitra1Model.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cardNo" ColumnName="cardNo" />
+          <ScalarProperty Name="nameOnCard" ColumnName="nameOnCard" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="KisanMitra1Model.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategories">
+          <ScalarProperty Name="prodCatId" ColumnName="prodCatId" />
+          <ScalarProperty Name="prodCatType" ColumnName="prodCatType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="KisanMitra1Model.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="volume" ColumnName="volume" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="prodSubCatId" ColumnName="prodSubCatId" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="col1" ColumnName="col1" />
+          <ScalarProperty Name="col2" ColumnName="col2" />
+          <ScalarProperty Name="col3" ColumnName="col3" />
+          <ScalarProperty Name="col4" ColumnName="col4" />
+          <ScalarProperty Name="col5" ColumnName="col5" />
+          <ScalarProperty Name="col6" ColumnName="col6" />
+          <ScalarProperty Name="col7" ColumnName="col7" />
+          <ScalarProperty Name="col8" ColumnName="col8" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSubCategories">
+      <EntityTypeMapping TypeName="KisanMitra1Model.ProductSubCategory">
+        <MappingFragment StoreEntitySet="ProductSubCategories">
+          <ScalarProperty Name="prodSubCatId" ColumnName="prodSubCatId" />
+          <ScalarProperty Name="prodSubCatType" ColumnName="prodSubCatType" />
+          <ScalarProperty Name="prodCatId" ColumnName="prodCatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="KisanMitra1Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobNo" ColumnName="mobNo" />
+          <ScalarProperty Name="gstinNo" ColumnName="gstinNo" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="roleType" ColumnName="roleType" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="col2" ColumnName="col2" />
+          <ScalarProperty Name="col3" ColumnName="col3" />
+          <ScalarProperty Name="col4" ColumnName="col4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
